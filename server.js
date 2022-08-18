@@ -8,6 +8,8 @@ var myApp = require('./myApp');
 var express = require('express');
 var app = express();
 
+
+
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
     var allowedOrigins = ['https://narrow-plane.gomix.me', 'https://www.freecodecamp.com'];
@@ -20,6 +22,11 @@ if (!process.env.DISABLE_XORIGIN) {
     next();
   });
 }
+
+app.get("/", function(req, res) {
+  res.send("Hello Express");
+});
+
 
 var port = process.env.PORT || 3000;
 bGround.setupBackgroundApp(app, myApp, __dirname).listen(port, function(){
